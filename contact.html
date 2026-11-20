@@ -215,6 +215,20 @@
 <script>
   // The coaching buttons link here with ?for=coaching, so the form starts on "Life coaching".
   if (new URLSearchParams(location.search).get('for') === 'coaching') document.querySelector('[data-interest]').value = 'Life coaching';
+  // FormSubmit emails the request within seconds but can take 30+ seconds to answer the browser.
+  // So send it in the background and go to the thank-you page after 3 seconds (or sooner if it answers).
+  // If the send fails outright, fall back to the plain form post.
+  const form = document.querySelector('form.form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type=submit]');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    const done = () => { location.href = 'thanks.html'; };
+    const wait = setTimeout(done, 3000);
+    fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
+      method: 'POST', body: new URLSearchParams(new FormData(form)), headers: { Accept: 'application/json' }, keepalive: true,
+    }).then(done, () => { clearTimeout(wait); form.submit(); });
+  });
   const t = document.querySelector('.nav-toggle'), n = document.getElementById('nav');
   t.addEventListener('click', () => { const o = n.classList.toggle('open'); t.setAttribute('aria-expanded', o); });
 </script>
