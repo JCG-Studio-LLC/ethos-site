@@ -27,7 +27,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,100;1,9..144,300..600,100&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=18">
+<link rel="stylesheet" href="assets/site.css?v=22">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -131,22 +131,24 @@
 </section>
 
 <section class="dark on-dark" id="find">
-  <div class="wrap find">
-    <div>
+  <div class="wrap">
+    <div class="find-head">
       <span class="eyebrow">Finding us</span>
       <h2>Upstairs in the Marshall Building.</h2>
       <p class="lede">Marshall Building · 121 S. 4th St., Suite 207 · Manhattan, KS 66502</p>
-      <ol class="steps">
-        <li><img src="assets/img/exterior.jpg" alt="The Marshall Building entrance at 121 S. 4th Street" loading="lazy"><div><h3>Find the Marshall Building</h3><p>121 S. 4th St. Look for the “Marshall Building” lettering above the glass doors.</p></div></li>
-        <li><img src="assets/img/diane-sign.jpg" alt="Diane pointing to the Ethos Therapy sign for Suite 207 on the building" loading="lazy"><div><h3>Head up to the second floor</h3><p>Ethos is listed on the building sign as Suite 207. Take the stairs up and follow the hallway.</p></div></li>
-        <li><img src="assets/img/suite-door.jpg" alt="The Suite 207 door with the Ethos E logo on the glass" loading="lazy"><div><h3>Look for the “E” on the door</h3><p>Suite 207 has a yellow door frame and our logo on the glass. Come on in.</p></div></li>
-      </ol>
       <div class="btn-row"><a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=121+S+4th+St+Manhattan+KS+66502" target="_blank" rel="noopener">Open in Google Maps</a></div>
     </div>
-    <div>
-      <div class="phone"><video src="assets/video/finding-us.mp4" poster="assets/img/finding-us-poster.jpg" controls muted playsinline preload="none" aria-label="Video: Diane walks from the street to Suite 207"></video></div>
-      <p class="phone-cap">Diane walks you from the sidewalk to our door.</p>
-    </div>
+    <!-- Same walk as on the home page: three photo steps, then Diane's walk-in film, every frame 9:16. -->
+    <ol class="walk">
+      <li><img src="assets/img/exterior.jpg" alt="The Marshall Building entrance at 121 S. 4th Street" loading="lazy" style="object-position: 46% 50%"><h3>Find the Marshall Building</h3><p>121 S. 4th St. Look for the “Marshall Building” lettering above the glass doors.</p></li>
+      <li><img src="assets/img/diane-sign.jpg" alt="Diane pointing to the Ethos Therapy sign for Suite 207 on the building" loading="lazy" style="object-position: 38% 50%"><h3>Head up to the second floor</h3><p>Ethos is listed on the building sign as Suite 207. Take the stairs up and follow the hallway.</p></li>
+      <li><img src="assets/img/suite-door.jpg" alt="The Suite 207 door with the Ethos E logo on the glass" loading="lazy"><h3>Look for the “E” on the door</h3><p>Suite 207 has a yellow door frame and our logo on the glass. Come on in.</p></li>
+      <li class="walk-film film-frame">
+        <span class="garden garden-pin" data-garden="flower" data-seed="23" data-flower="daisy" role="presentation"></span>
+        <video src="assets/video/finding-us.mp4" poster="assets/img/finding-us-poster.jpg" controls muted playsinline preload="none" width="720" height="1280" aria-label="Video: Diane walks from the street to Suite 207"></video>
+        <p>Diane walks you from the sidewalk to our door.</p>
+      </li>
+    </ol>
   </div>
 </section>
 
@@ -194,6 +196,7 @@
           <li><a href="team.html">Our team</a></li>
           <li><a href="fees.html">Fees &amp; FAQ</a></li>
           <li><a href="contact.html">Find us</a></li>
+          <li><a href="writing.html">From Diane</a></li>
         </ul>
       </div>
     </div>

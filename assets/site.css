@@ -276,22 +276,17 @@ blockquote.pull cite { display: block; margin-top: .6em; font: 400 .92rem var(--
 .facts dd { margin: 4px 0 0; }
 
 /* Finding us */
-.find { display: grid; grid-template-columns: 1.25fr .75fr; gap: clamp(32px, 6vw, 72px); align-items: start; }
-.steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 22px; counter-reset: s; }
-.steps li { display: grid; grid-template-columns: 150px 1fr; gap: 22px; align-items: center; counter-increment: s; }
-.steps img { width: 150px; height: 120px; object-fit: cover; border-radius: 12px; }
-.steps h3 { font-size: 1.3rem; margin-bottom: .25em; }
-.steps h3::before { content: counter(s) ". "; color: var(--marigold); }
-.steps p { margin: 0; color: #c9d3cd; }
-.phone {
-  justify-self: center;
-  width: min(300px, 100%);
-  border-radius: 34px; padding: 10px;
-  background: #0b1d1b;
-  box-shadow: 0 30px 60px -20px rgba(0,0,0,.6);
-}
-.phone video { border-radius: 26px; width: 100%; aspect-ratio: 9/16; object-fit: cover; background: #000; }
-.phone-cap { text-align: center; font-size: .9rem; color: #c9d3cd; margin-top: 14px; }
+/* the walk: three photo steps and the walk-in film in one row, every frame 9:16 (the film's own shape).
+   Two columns on tablets; on phones the row swipes (rules at the end of this file). */
+.find-head { max-width: 40rem; margin-bottom: clamp(32px, 4vw, 52px); }
+.walk { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(18px, 2.4vw, 32px); counter-reset: s; }
+.walk > li { min-width: 0; }
+.walk img, .walk .film-frame video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: cover; border-radius: var(--radius); background: var(--green-ink); }
+.walk .film-frame video { box-shadow: 0 30px 60px -24px rgba(0, 0, 0, .6); }   /* two classes, so it beats the 16:9 promo rule below */
+.walk h3 { font-size: 1.2rem; margin: 18px 0 .3em; counter-increment: s; }
+.walk h3::before { content: counter(s) ". "; color: var(--marigold); }
+.walk p { margin: 0; color: #c9d3cd; font-size: .95rem; }
+.walk-film p { margin-top: 18px; }
 
 /* Breathing flower */
 .breath { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
@@ -382,6 +377,25 @@ blockquote.pull cite { display: block; margin-top: .6em; font: 400 .92rem var(--
 .prose { max-width: 720px; }
 .prose h2 { margin-top: 1.6em; font-size: 2rem; }
 .prose h3 { margin-top: 1.4em; }
+/* "From Diane" writing page. Not .prose: site.js fades .prose in once 12% of it is on screen, which a page this long never reaches. */
+.writing { max-width: 720px; }
+.post-item { padding: 30px 0; border-top: 1px solid var(--line); }
+.post-item:first-child { padding-top: 0; border-top: 0; }
+.post-item h2 { margin: .2em 0 .4em; font-size: 1.75rem; }
+.post-item h2 a { color: inherit; text-decoration: none; }
+.post-item h2 a:hover { color: var(--brick); }
+.post-item p { margin: 0 0 .6em; }
+.post-date { margin: 0; color: var(--muted); font-size: .95rem; }
+.post-more { font-weight: 700; }
+.eyebrow-link { text-decoration: none; }
+.post-byline { margin-top: 1rem; color: var(--muted); }
+.post-cta { margin-top: 3rem; }
+.post-cta p { margin: 0; }
+.more-posts { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line); }
+.more-posts h2 { margin: 0 0 .8em; font-size: 1.4rem; }
+.more-posts ul { margin: 0; padding-left: 1.2em; }
+.more-posts li { margin-bottom: .4em; }
+.bio-more { margin-top: 1.2rem; }
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 64px); }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .card {
@@ -450,8 +464,7 @@ details.faq p { margin: 14px 0 0; color: var(--muted); max-width: 46em; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .approach { grid-template-columns: 1fr; gap: 8px; }
   .hero-badge { left: -18px; }
-  .steps li { grid-template-columns: 112px 1fr; gap: 18px; }
-  .steps img { width: 112px; height: 100px; }
+  .walk { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 44px; }
   .garden-corner { width: 200px; }
   .film-frame .garden-pin { right: -10px; }
   .person { align-items: start; }
@@ -519,12 +532,18 @@ details.faq p { margin: 14px 0 0; color: var(--muted); max-width: 46em; }
   body { font-size: 17px; }
   .concern-list { columns: 1; }
   .facts { grid-template-columns: 1fr; }
-  .steps li { grid-template-columns: 96px 1fr; gap: 16px; }
-  .steps img { width: 96px; height: 96px; }
   .footer-grid { grid-template-columns: 1fr; }
   .topbar .wrap { justify-content: center; text-align: center; }
   .arch-wrap::before { inset: -10px -10px 20px 20px; }
   .rug { height: 84px; }
   .film-frame .garden-pin { right: -8px; }
   .garden-edge { top: -34px; height: 68px; }
+}
+
+/* Finding us on phones: the walk becomes a sideways swipe, one frame and a peek of the next (rules above for desktop and tablet) */
+@media (max-width: 739px) {
+  .walk { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 74%; gap: 16px; overflow-x: auto; overscroll-behavior-x: contain;
+          scroll-snap-type: x mandatory; scrollbar-width: none; margin-inline: calc(-1 * var(--gutter, 20px)); padding: 30px var(--gutter, 20px) 4px; scroll-padding-inline: var(--gutter, 20px); }
+  .walk::-webkit-scrollbar { display: none; }
+  .walk > li { scroll-snap-align: start; }
 }
